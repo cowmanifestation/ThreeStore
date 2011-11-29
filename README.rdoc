@@ -1,0 +1,7 @@
+= ThreeStore
+
+== FAQ
+
+=== "ThreeStore"?  That's stupid.  Why isn't it called "3store"?  That's much cooler.
+
+Because modules can't start with a number.  Jeez, lay off!  And get off my lawn!
