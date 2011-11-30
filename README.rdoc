@@ -1,5 +1,8 @@
 = ThreeStore
 
+http://stillmaintained.com/cowmanifestation/ThreeStore.png
+http://travis-ci.org/cowmanifestation/ThreeStore.png ({More info}[http://travis-ci.org/cowmanifestation/ThreeStore])
+
 == Tutorial
 
 TODO
