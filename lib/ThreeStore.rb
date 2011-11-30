@@ -6,7 +6,7 @@ autoload :VERSION, "ThreeStore/version"
 # def initalize(key, secret, bucket)
 class ThreeStore
   def initialize(key, secret, bucket)
-    AWS::S3::Base.establish_connection!(access_key_id: key, secret_access_key: secret)
+    AWS::S3::Base.establish_connection!(:access_key_id => key, :secret_access_key => secret)
     @bucket = bucket
   end
 
