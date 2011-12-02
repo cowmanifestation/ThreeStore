@@ -5,7 +5,14 @@ http://travis-ci.org/cowmanifestation/ThreeStore.png ({More info}[http://travis-
 
 == Tutorial
 
-TODO
+To store something on s3:
+
+  store = ThreeStore.new(ENV['S3_KEY'], ENV['S3_SECRET'], 'my-bucket')
+  @store.store_on_s3(:url => 'http://example.com/assets/picture.png', :content_type => 'image/png', :access => 'public-read')
+
+This will return your file's new location on s3:
+
+  => 'http://s3.amazonaws.com/my-bucket/example.com%2assets%2picture.png'
 
 == FAQ
 
