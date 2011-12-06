@@ -7,12 +7,29 @@ http://travis-ci.org/cowmanifestation/ThreeStore.png ({More info}[http://travis-
 
 To store something on s3:
 
+You can store your s3 secret access key id and secret access key as environment variables, and access them like this:
+
   @store = ThreeStore.new(ENV['S3_KEY'], ENV['S3_SECRET'], 'my-bucket')
-  @store.store_on_s3(:url => 'http://example.com/assets/picture.png', :content_type => 'image/png', :access => 'public-read')
+
+Or you can create a yaml file to store them in:
+
+  @store = ThreeStore.new(@yaml[:access_key_id], @yaml[:secret_access_key], @test_bucket)
+
+To upload a file, use +ThreeStore#store_on_s3+:
+
+  @store.store_on_s3(:url => 'http://example.com/assets/picture.png', :key => 'picture.png', :content_type => 'image/png', :access => 'public-read')
+
+Options to pass to +store_on_s3+: 
+  * +:url+, the url or path from which to fetch the file 
+  * +:key+, the that you wish your object to have on s3
+  * +:content_type+ (optional) - the content type will be inferred from the file extension, but it can be passed in if needed
+  * +:access+ (optional) - Default access is private
 
 This will return your file's new location on s3:
 
-  => 'http://s3.amazonaws.com/my-bucket/example.com%2assets%2picture.png'
+  => 'http://s3.amazonaws.com/my-bucket/picture.png'
+
+The default location is constructed thus: "http://s3.amazonaws.com/" + bucket name + key
 
 == FAQ
 

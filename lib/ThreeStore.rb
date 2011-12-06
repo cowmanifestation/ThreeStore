@@ -11,28 +11,20 @@ class ThreeStore
 
   # Options: url (required),
   #          content_type,
-  #          access_level
+  #          access_level,
+  #          key (destination on s3)
+
   def store_on_s3(options)
     # Deleting :url from options because we don't want it in the options that we pass to s3
     # and removing some characters that aren't allowed in urls
     url = options.delete(:url).gsub(/ /, '%20').gsub(/\^/, '%5E')
     file = open(url)
+    
+    key = options.delete(:key)
 
-    key = create_key(url, file)
-
-    AWS::S3::S3Object.store(key, file, @bucket, :access => options[:access], :content_type => options[:content_type])
+    AWS::S3::S3Object.store(key, file, @bucket, options)
 
     # Return location on s3
     "http://s3.amazonaws.com/" + @bucket + "/" + key
-  end
-
-  def create_key(url, file)
-    key = CGI.escape(url.gsub(/http:\/\//, ''))
-    file_content = file.read
-
-    digest = Digest::MD5.hexdigest(file_content)
-    extname = File.extname(url)
-
-    key.gsub(extname, "-#{digest}#{extname}")
   end
 end
