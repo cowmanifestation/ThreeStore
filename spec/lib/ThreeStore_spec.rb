@@ -2,8 +2,6 @@ require 'spec_helper'
 require 'yaml'
 
 describe ThreeStore do
-  # TODO: UPdate README
-  
   before(:all) do
     @yaml = YAML.load_file('ThreeStore.yml')
     @test_bucket = @yaml[:test_bucket]
