@@ -23,7 +23,7 @@ Options to pass to +store_on_s3+:
   * :url, the url or path from which to fetch the file 
   * :key, the that you wish your object to have on s3
   * :content_type (optional) - the content type will be inferred from the file extension, but it can be passed in if needed
-  * :access (optional) - Default access is private
+  * :access (optional) - Default access is private, but can be set to 'public-read' and maybe even 'public-write'.  For more information, look in the Amazon S3 docs: http://aws.amazon.com/documentation/
 
 This will return your file's new location on s3:
 
