@@ -15,7 +15,7 @@ Or you can create a yaml file to store them in:
 
   @store = ThreeStore.new(@yaml[:access_key_id], @yaml[:secret_access_key], @test_bucket)
 
-To upload a file, use + ThreeStore#store_on_s3 +:
+To upload a file, use ThreeStore#store_on_s3:
 
   @store.store_on_s3(:url => 'http://example.com/assets/picture.png', :key => 'picture.png', :content_type => 'image/png', :access => 'public-read')
 
@@ -23,13 +23,15 @@ Options to pass to +store_on_s3+:
   * :url, the url or path from which to fetch the file 
   * :key, the that you wish your object to have on s3
   * :content_type (optional) - the content type will be inferred from the file extension, but it can be passed in if needed
-  * :access (optional) - Default access is private, but can be set to 'public-read' and maybe even 'public-write'.  For more information, look in the Amazon S3 docs: http://aws.amazon.com/documentation/
+  * :access (optional) - Default access is private, but can be set to 'public-read' and maybe even 'public-write'
+  
+(For more information on access level options, look in the Amazon S3 docs: http://aws.amazon.com/documentation/)
 
 This will return your file's new location on s3:
 
   => 'http://s3.amazonaws.com/my-bucket/picture.png'
 
-The destination path is constructed thus: "http://s3.amazonaws.com/" + bucket name + key
+The destination path is constructed thus: http://s3.amazonaws.com/ + bucket name + key
 
 == FAQ
 
