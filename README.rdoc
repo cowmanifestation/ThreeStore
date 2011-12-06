@@ -7,13 +7,14 @@ http://travis-ci.org/cowmanifestation/ThreeStore.png ({More info}[http://travis-
 
 To store something on s3:
 
-You can store your s3 secret access key id and secret access key as environment variables, and access them like this:
+Perhaps you are storing your s3 secret access key id and secret access key as environment variables - you can access them like this:
 
   @store = ThreeStore.new(ENV['S3_KEY'], ENV['S3_SECRET'], 'my-bucket')
 
-Or you can create a yaml file to store them in:
+If you are storing aforementioned credentials in a yaml file:
 
-  @store = ThreeStore.new(@yaml[:access_key_id], @yaml[:secret_access_key], @test_bucket)
+  @yaml = 'path_to_my_yaml_file.yml'
+  @store = ThreeStore.new(@yaml[:access_key_id], @yaml[:secret_access_key], 'my-bucket')
 
 To upload a file, use ThreeStore#store_on_s3:
 
